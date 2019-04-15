@@ -23,50 +23,48 @@ $(document).keypress(function () {
 
 // Button on click event listener
 $('.btn').click(function () {
+        // Store the id of the button that got clicked
+        const userChosenColour = this.id;
 
-    // Store the id of the button that got clicked
-    const userChosenColour = this.id;
+        // Push to userClickedPattern
+        userClickedPattern.push(userChosenColour);
 
-    // Push to userClickedPattern
-    userClickedPattern.push(userChosenColour);
+        // Play the colour's sound file
+        playSound(userChosenColour);
 
-    // Play the colour's sound file
-    playSound(userChosenColour);
+        // Animate clicked button
+        animatePress(this);
 
-    // Animate clicked button
-    animatePress(this);
-
-    // Call checkAnswer() after a user has clicked and chosen their answer, passing in the index of the last answer in the user's sequence
-    checkAnswer(userClickedPattern.length - 1);
-});
+        // Call checkAnswer() after a user has clicked and chosen their answer, passing in the index of the last answer in the user's sequence
+        checkAnswer(userClickedPattern.length - 1);
+    });
 
 // Function to generate next sequence
 function nextSequence() {
+        // Reset the userClickedPattern to an empty array ready for the next level
+        userClickedPattern = [];
 
-    // Reset the userClickedPattern to an empty array ready for the next level
-    userClickedPattern = [];
+        // Generate a new random number between 0 and 3
+        const randomNumber = Math.floor(Math.random() * 4);
 
-    // Generate a new random number between 0 and 3
-    const randomNumber = Math.floor(Math.random() * 4);
+        // Select a random colour, based on randomNumber, from the buttonColours array
+        let randomChosenColour = buttonColours[randomNumber];
 
-    // Select a random colour, based on randomNumber, from the buttonColours array
-    let randomChosenColour = buttonColours[randomNumber];
+        // Push randomChosenColour to gamePattern array.
+        gamePattern.push(randomChosenColour);
 
-    // Push randomChosenColour to gamePattern array.
-    gamePattern.push(randomChosenColour);
+        // Select the button with the same id as the randomChosenColour and make it flash
+        $(`#${randomChosenColour}`).fadeOut(100).fadeIn(100);
 
-    // Select the button with the same id as the randomChosenColour and make it flash
-    $(`#${randomChosenColour}`).fadeOut(100).fadeIn(100);
+        // Play the colour's sound file
+        playSound(randomChosenColour);
 
-    // Play the colour's sound file
-    playSound(randomChosenColour);
+        // Iterate level number
+        level++;
 
-    // Iterate level number
-    level++;
-
-    // And update the title accordingly
-    $('#level-title').text(`Level ${level}`);
-}
+        // And update the title accordingly
+        $('#level-title').text(`Level ${level}`);
+    }
 
 // Create a new function called checkAnswer(), it should take one input with the name currentLevel
 function checkAnswer(currentLevel) {
