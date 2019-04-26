@@ -13,8 +13,8 @@ let gameStarted = false;
 // Init level variable
 let level = 0;
 
-// On keypress call nextSequence(), set gameStarted flag so it only runs on first keypress
-$(document).keypress(function () {
+// On keypress or touch press, call nextSequence(), set gameStarted flag so it only runs on first keypress
+$(document).on('keypress touchstart',function () {
     if (!gameStarted) {
         nextSequence();
         gameStarted = true;
