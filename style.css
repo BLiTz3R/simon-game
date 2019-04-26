@@ -20,7 +20,7 @@ body {
 }
 
 .btn {
-  margin: 25px;
+  margin: 2%;
   display: inline-block;
   height: 200px;
   width: 200px;
@@ -52,4 +52,63 @@ body {
 .pressed {
   box-shadow: 0 0 20px white;
   background-color: grey;
+}
+
+@media only screen and (max-width: 1104px) {
+  #level-title {
+    font-size: 2rem;
+  }
+  .btn {
+    height: 150px;
+    width: 150px;
+  }
+}
+
+@media only screen and (max-width: 904px) {
+  .btn {
+    height: 120px;
+    width: 120px;
+  }
+}
+
+@media only screen and (max-width: 730px) {
+  #level-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 635px) {
+  .btn {
+    height: 100px;
+    width: 100px;
+    border: 5px solid black;
+  }
+  
+}
+
+@media only screen and (max-width: 552px) {
+  #level-title {
+    font-size: 1rem;
+  }
+  .btn {
+    height: 50px;
+    width: 50px;
+  }
+}
+
+@media only screen and (max-width: 370px) {
+  #level-title {
+    font-size: 0.7rem;
+  }
+}
+
+@media only screen and (max-width: 290px) {
+  #level-title {
+    font-size: 0.6rem;
+  }
+  .btn {
+    height: 40px;
+    width: 40px;
+    border: 3px solid black;
+  }
 }
